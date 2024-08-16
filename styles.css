@@ -1,0 +1,250 @@
+:root {
+    --background-color-start: hsl(0, 0%, 100%);
+    --background-color-end: hsl(330, 100%, 88%);
+    --font-color: #333;
+    --font-family: 'Montserrat', sans-serif;
+    --primary-color: #e91e63;
+    --secondary-color: #ff4081;
+    --hover-color: #fc5d83;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background-color: var(--background-color-start);
+    transition: background-color 0.5s;
+}
+
+nav {
+    width: 100%;
+    height: 100px;
+    background: var(--secondary-color);
+}
+
+nav .main_pages {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+
+nav .main_pages a {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-decoration: none;
+    color: white;
+    font-family: Arial, sans-serif;
+    transition: background 0.3s;
+}
+
+nav .main_pages a:hover {
+    background: var(--hover-color);
+}
+
+.content {
+    position: relative;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.content h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.content p {
+    font-size: 1.5em;
+    font-weight: 400;
+    color: var(--font-color);
+    margin: 10px 0 0;
+}
+
+.text-brut-container {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.text-brut-container h2 {
+    font-size: 1.5em;
+    color: var(--primary-color);
+}
+
+#textBrut {
+    width: 80%;
+    margin: 10px auto 20px;
+    padding: 10px;
+    font-size: 1em;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f9f9f9;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
+
+#text {
+    margin: 10px auto 20px;
+    padding: 10px;
+    text-align: center; /* Centrer le texte à l'intérieur de la boîte */
+    font-size: 1em;
+    border: 2px solid var(--primary-color);
+    border-radius: 9px;
+    background-color: #f9f9f9;
+    display: inline-block; /* La boîte s'ajuste à la largeur du texte */
+    font-family: 'Montserrat', sans-serif; /* Corriger la syntaxe pour la police */
+    font-weight: bold;
+}
+
+.container {
+    text-align: center; /* Centrer la boîte dans son conteneur parent */
+}
+
+.spacer {
+    height: 150vh;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+}
+
+.image-box {
+    position: relative;
+    width: 40%;
+    height: 400px;
+    margin: 0 5px;
+    overflow: hidden;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 2px 8px 10px rgba(0, 0, 0, 0.8);
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.image-box img.show {
+    opacity: 1;
+}
+
+.nav-btn {
+    background-color: var(--secondary-color);
+    border: none;
+    width: 75px;
+    height: 75px;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-50%) scale(1.1);
+}
+
+#prev-btn {
+    left: 35%;
+}
+
+#next-btn {
+    right: 35%;
+}
+
+@media (max-width: 1142px) {
+    .image-box {
+        width: 40%;
+        height: 70%;
+    }
+
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1em;
+    }
+
+    #prev-btn {
+        left: 20%;
+    }
+
+    #next-btn {
+        right: 18%;
+    }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .image-box {
+        width: 40%;
+        height: 60%;
+    }
+
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1em;
+    }
+
+    #prev-btn{
+        left: 23%;
+    }
+
+    #next-btn {
+        right: 20%;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-box {
+        width: 60%;
+    }
+
+    .slider-container {
+        padding: 5px;
+    }
+
+    #prev-btn{
+        left: 10%;
+    }
+
+    #next-btn {
+        right: 8%;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background: var(--hover-color);
+    color: #fff;
+}
