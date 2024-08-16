@@ -44,3 +44,35 @@ document.addEventListener("DOMContentLoaded", function() {
     // Initialiser avec la première image
     updateImage();
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const heartContainer = document.createElement('div');
+    heartContainer.classList.add('heart-container');
+    document.body.appendChild(heartContainer);
+
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+
+        // Position aléatoire sur l'axe X
+        heart.style.left = Math.random() * 100 + 'vw';
+
+        // Taille aléatoire pour les cœurs
+        const size = Math.random() * 10 + 10 + 'px';
+        heart.style.width = size;
+        heart.style.height = size;
+
+        // Durée de l'animation aléatoire
+        const duration = Math.random() * 5 + 2 + 's';
+        heart.style.animationDuration = duration;
+
+        heartContainer.appendChild(heart);
+
+        // Supprimer le cœur après l'animation
+        setTimeout(() => {
+            heart.remove();
+        }, parseInt(duration) * 1000);
+    }
+
+    setInterval(createHeart, 150);
+});
