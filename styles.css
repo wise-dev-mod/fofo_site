@@ -13,11 +13,12 @@ body, html {
     padding: 0;
     font-family: var(--font-family);
     background-color: #ffe6f2; /* Couleur de fond rose clair */
-    overflow: hidden;
     transition: background-color 0.5s;
+    min-height: 100vh; /* S'assure que la page occupe toujours au moins 100% de la hauteur de la fenêtre */
+    display: flex;
+    flex-direction: column;
 }
 
-/* Conteneur pour les cœurs */
 .heart-container {
     position: fixed;
     top: 0;
@@ -26,21 +27,19 @@ body, html {
     height: 100%;
     overflow: hidden;
     pointer-events: none; /* Empêche l'interaction avec les cœurs */
-    z-index: 1 /* Place les cœurs derrière le contenu */
+    z-index: 1; /* Place les cœurs derrière le contenu */
 }
 
-/* Style pour les cœurs */
 .heart {
     position: absolute;
     width: 20px;
     height: 20px;
     background-color: var(--primary-color); /* Couleur des cœurs */
-    clip-path: polygon(50% 15%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-    animation: fall 9s linear infinite;
-    opacity: 0.8; /* Légère transparence*/
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    animation: fall 7s linear infinite;
+    opacity: 0.7; /* Légère transparence pour les cœurs */
 }
 
-/* Animation pour les cœurs qui tombent */
 @keyframes fall {
     0% {
         transform: translateY(-100%);
@@ -82,9 +81,10 @@ nav .main_pages a:hover {
 }
 
 .content {
-    position: relative;
     padding: 40px 20px;
     text-align: center;
+    z-index: 5;
+    flex: 1; /* Permet à la section content de s'étendre pour occuper l'espace restant */
 }
 
 .content h1 {
@@ -118,13 +118,13 @@ nav .main_pages a:hover {
     font-size: 1em;
     border: 2px solid var(--primary-color);
     border-radius: 5px;
-    font-family: 'Montserrat', sans-serif;
     background-color: #f9f9f9;
     white-space: pre-wrap;
     overflow-wrap: break-word;
+    font-family: 'Montserrat', sans-serif;
 }
 
-#text {
+header .text {
     margin: 10px auto 20px;
     padding: 10px;
     text-align: center; /* Centrer le texte à l'intérieur de la boîte */
@@ -137,12 +137,8 @@ nav .main_pages a:hover {
     font-weight: bold;
 }
 
-.container {
+header .container {
     text-align: center; /* Centrer la boîte dans son conteneur parent */
-}
-
-.spacer {
-    height: 150vh;
 }
 
 .slider-container {
@@ -151,9 +147,7 @@ nav .main_pages a:hover {
     justify-content: center;
     width: 100%;
     max-width: 900px;
-    margin: 0 auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px auto;
     padding: 10px;
 }
 
@@ -165,13 +159,11 @@ nav .main_pages a:hover {
 }
 
 .image-box {
-    position: relative;
     width: 40%;
     height: 400px;
     margin: 0 5px;
     overflow: hidden;
     border-radius: 5px;
-    margin-bottom: 10px;
     box-shadow: 2px 8px 10px rgba(0, 0, 0, 0.8);
 }
 
@@ -192,18 +184,19 @@ nav .main_pages a:hover {
 .nav-btn {
     background-color: var(--secondary-color);
     border: none;
-    width: 75px;
-    height: 75px;
+    width: 40px;
+    height: 40px;
     color: white;
-    font-size: 1.5em;
+    font-size: 1em;
     cursor: pointer;
     border-radius: 50%;
     padding: 5px;
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5);
     position: absolute;
-    top: 45%;
+    top: 500px;
     transform: translateY(-50%);
     transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 5;
 }
 
 .nav-btn:hover {
@@ -221,63 +214,46 @@ nav .main_pages a:hover {
 
 @media (max-width: 1142px) {
     .image-box {
-        width: 40%;
+        width: 275px;
         height: 300px; /* Fixer une hauteur en pixels pour uniformiser */
     }
 
-    .nav-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1em;
-    }
-
     #prev-btn {
-        left: 20%;
+        left: 15%;
     }
 
     #next-btn {
-        right: 18%;
+        right: 11%;
     }
 }
 
-/* Media Queries */
 @media (max-width: 768px) {
     .image-box {
-        width: 40%;
-        height: 250px; /* Ajuster la hauteur en pixels */
+        width: 250px;
+        height: 275px; /* Ajuster la hauteur en pixels */
     }
 
-    .nav-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1em;
-    }
-
-    #prev-btn{
-        left: 23%;
+    #prev-btn {
+        left: 15%;
     }
 
     #next-btn {
-        right: 20%;
+        right: 11%;
     }
 }
 
 @media (max-width: 480px) {
     .image-box {
-        width: 60%;
-        height: 200px; /* Uniformiser la hauteur en pixels */
+        width: 275px;
+        height: 275px; /* Uniformiser la hauteur en pixels */
     }
 
-    .slider-container {
-        padding: 5px;
-    }
-
-    #prev-btn{
+    #prev-btn {
         left: 10%;
     }
 
     #next-btn {
-        right: 8%;
+        right: 5%;
     }
 }
 
@@ -286,4 +262,6 @@ footer {
     padding: 1rem 0;
     background: var(--hover-color);
     color: #fff;
+    position: relative;
+    z-index: 5;
 }

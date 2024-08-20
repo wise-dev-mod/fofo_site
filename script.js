@@ -46,33 +46,37 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    const heartContainer = document.createElement('div');
-    heartContainer.classList.add('heart-container');
-    document.body.appendChild(heartContainer);
+    // Vérifie si le conteneur .heart-container existe
+    const heartContainer = document.querySelector('.heart-container');
 
-    function createHeart() {
-        const heart = document.createElement('div');
-        heart.classList.add('heart');
+    // Si le conteneur existe, lance l'animation des cœurs
+    if (heartContainer) {
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
 
-        // Position aléatoire sur l'axe X
-        heart.style.left = Math.random() * 100 + 'vw';
+            // Position aléatoire sur l'axe X
+            heart.style.left = Math.random() * 100 + 'vw';
 
-        // Taille aléatoire pour les cœurs
-        const size = Math.random() * 10 + 10 + 'px';
-        heart.style.width = size;
-        heart.style.height = size;
+            // Taille aléatoire pour les cœurs
+            const size = Math.random() * 10 + 10 + 'px';
+            heart.style.width = size;
+            heart.style.height = size;
 
-        // Durée de l'animation aléatoire
-        const duration = Math.random() * 5 + 2 + 's';
-        heart.style.animationDuration = duration;
+            // Durée de l'animation aléatoire
+            const duration = Math.random() * 5 + 2 + 's';
+            heart.style.animationDuration = duration;
 
-        heartContainer.appendChild(heart);
+            // Ajoute le cœur au conteneur
+            heartContainer.appendChild(heart);
 
-        // Supprimer le cœur après l'animation
-        setTimeout(() => {
-            heart.remove();
-        }, parseInt(duration) * 1000);
+            // Supprime le cœur après l'animation
+            setTimeout(() => {
+                heart.remove();
+            }, parseInt(duration) * 1000);
+        }
+
+        // Crée des cœurs à intervalles réguliers
+        setInterval(createHeart, 150);
     }
-
-    setInterval(createHeart, 150);
 });
